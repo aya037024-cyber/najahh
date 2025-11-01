@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>نتائج الامتحانات - وزارة التربية</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ===== تنسيقات صفحة النتيجة (الكود الأول مع تصحيح التعارض) ===== */
+    .container-result {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 950px;
+      margin: auto;
+    }
+
+    .result-box {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .result-card {
+      flex: 1;
+      order: 1;
+    }
+
+    .info-card {
+      flex: 1;
+      order: 2;
+      position: relative;
+    }
+
+    .header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  text-align: right;
+    }
+
+    .header img {
+  position: static;
+  width: 110px;
+  height: 110px;
+    }
+  .header .title-box {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.header .title-box h1,
+.header .title-box h2 {
+  margin: 0;
+  font-weight: 800;
+  color: #111;
+}
+
+.header .title-box h1 {
+  font-size: 28px;
+}
+
+.header .title-box h2 {
+  font-size: 28px;
+}
+
+.header .title-box p {
+  font-size: 15px;
+  color: #444;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.exam-title {
+  text-align: right;       /* محاذاة النص إلى اليمين مثل الاسم الرباعي */
+  font-size: 18px;
+  font-weight: 800;
+  color: #111;
+  margin: 0 0 10px 0;      /* تقليل المسافات ليكون قريب من الاسم */
+  line-height: 1.4;
+}
+
+
+    .header h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .header h2 {
+      margin: 5px 0;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .header p {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 10px;
+    }
+
+    th, td {
+      padding: 10px 6px;
+      border-bottom: 1px solid #eee;
+      font-size: 15px;
+    }
+
+    th {
+      background: #f9f9f9;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    td:last-child {
+      text-align: left;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #777;
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+
+    .info-list {
+      margin-top: 10px;
+    }
+
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #f1f1f1;
+      font-size: 15px;
+    }
+
+    .label {
+      color: #666;
+    }
+
+    .value {
+      font-weight: 600;
+    }
+
+    .footer {
+      margin-top: 20px;
+    }
+
+    .footer .btn {
+      border: 1px solid #ddd;
+      background: #fff;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-left: 6px;
+    }
+
+    .status {
+      color: red;
+      font-weight: 700;
+    }
+
+    @media (max-width: 800px) {
+      .result-card {
+        order: 2;
+      }
+      .info-card {
+        order: 1;
+      }
+      .header img {
+        position: static;
+        display: block;
+        margin: 0 auto 10px;
+      }
+      table, th, td {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="logo">
+      <img src="logo.jpg" width="86" alt="logo">
+      <div>
+        <div style="font-weight:700">جمهورية العراق</div>
+        <div style="font-size:14px;color:#666">وزارة التربية</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#">الأخبار والأنشطة</a>
+      <a href="#">عن الوزارة</a>
+      <a href="#">شؤون المواطنين</a>
+      <a href="#">موقع الوزارة</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- الصفحة الرئيسية -->
+    <section class="hero" id="home">
+      <div class="container">
+        <h1>تحقق من نتيجتك الامتحانية<br>بسهولة ضمن نتائج <br>الامتحانات الوزارية</h1>
+        <p class="lead">نُسعد بأن نوفر لك هذه الخدمة الإلكترونية لعرض نتائجك الامتحانية بسهولة وسرعة. اختر مديريتك التعليمية من القائمة ثم اضغط على زر "تسجيل الدخول" للمتابعة.</p>
+        <div class="controls">
+          <select id="mudiriyah">
+            <option value="">اختر مديريتك التعليمية ▾</option>
+            <option>الكرخ الأولى</option>
+            <option>الكرخ الثانية</option>
+            <option>الكرخ الثالثة</option>
+            <option>الرصافة الأولى</option>
+            <option>الرصافة الثانية</option>
+            <option>الرصافة الثالثة</option>
+            <option>البصرة</option>
+            <option>نينوى</option>
+            <option>صلاح الدين</option>
+            <option>الانبار</option>
+            <option>كركوك</option>
+            <option>ديالى</option>
+            <option>ذي قار</option>
+            <option>بابل</option>
+            <option>القادسية</option>
+            <option>النجف الاشرف</option>
+          </select>
+          <button class="btn btn-primary" id="openLogin">الانتقال الى واجهة الطالب</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- صفحة تسجيل الدخول -->
+    <section class="page" id="loginPage">
+      <div class="card">
+        <div class="login-header">
+         <img src="logos.png" alt="شعار الوزارة">
+          <div class="login-text">
+           <div class="title">جمهورية العراق</div>
+           <div class="title">وزارة التربية</div>
+         </div>
+       </div>
+
+        <h2>تسجيل الدخول</h2>
+        <p class="small">اللجنة الدائمة للامتحانات العامة لعام 2024/2025<br>يرجى إدخال المعلومات بشكل صحيح لتسجيل الدخول إلى المنصة.</p>
+
+        <div class="field">
+          <label>الرقم الامتحاني</label>
+          <input id="examNum" placeholder="ادخل الرقم الامتحاني">
+        </div>
+        <div class="field">
+          <label>الرمز السري</label>
+          <input id="pass" type="password" placeholder="ادخل الرمز السري">
+        </div>
+        <div class="field">
+          <label>كم حاصل جمع 65 + 4؟</label>
+          <div class="captcha">
+            <input id="captcha" placeholder="اكتب الناتج هنا">
+            <div class="small" id="timer">01:59</div>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" id="loginBtn">تسجيل الدخول</button>
+          <button class="btn" id="backHome">عودة</button>
+        </div>
+        <p class="small" style="margin-top:16px;text-align:center;color:#999">© 2025 وزارة التربية العراقية</p>
+      </div>
+    </section>
+
+    <!-- صفحة النتيجة (من الكود الأول بعد الإصلاح) -->
+    <section class="page" id="resultPage">
+      <div class="container-result">
+        <div class="result-box result-card">
+          <h3 style="margin-top:0;">معلومات النتيجة</h3>
+          <table>
+            <tr><th>المادة</th><th>الدرجة</th></tr>
+            <tr><td>الاسلامية / العربية</td><td>100</td></tr>
+            <tr><td>الانكليزية</td><td>م</td></tr>
+            <tr><td>الرياضيات</td><td>100</td></tr>
+            <tr><td>الاجتماعيات</td><td>م</td></tr>
+            <tr><td>الاحياء</td><td>100</td></tr>
+            <tr><td>الكيمياء</td><td>100</td></tr>
+            <tr><td>الفيزياء</td><td>م</td></tr>
+          </table>
+          <div class="note">
+            ملاحظة: هذه النتيجة لا تعد وثيقة رسمية ويجب الاعتماد على الوثائق الورقية الصادرة من الوزارة.
+          </div>
+        </div>
+
+        <div class="result-box info-card">
+          <div class="header">
+           <img src="logos.png" alt="شعار">
+           <div class="title-box">
+             <h1>1</h1>
+             <h2>ة</h2>
+             
+  ى        </div>
+          </div>
+
+          <p class="exam-title">اللجنة الدائمة للامتحانات العامة<br>للعام 2024 / 2025</p>
+
+          <div class="info-list">
+            <div class="info-item"><div class="label">الاسم الرباعي</div><div class="value">مينا طه علي طه</div></div>
+            <div class="info-item"><div class="label">اسم المدرسة</div><div class="value">******</div></div>
+            <div class="info-item"><div class="label">المديرية</div><div class="value">******</div></div>
+            <div class="info-item"><div class="label">الفرع</div><div class="value">متوسطة</div></div>
+            <div class="info-item"><div class="label">المجموع</div><div class="value">0</div></div>
+            <div class="info-item"><div class="label">المعدل</div><div class="value">0%</div></div>
+            <div class="info-item"><div class="label">النتيجة النهائية</div><div class="value status">مكمل</div></div>
+          </div>
+
+          <div class="footer">
+            <button class="btn">تحميل النتيجة</button>
+            <button class="btn" id="backToLogin">تسجيل الخروج</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>جميع الحقوق محفوظة © 2025 وزارة التربية العراقية</footer>
+
+  <script>
+    const home = document.getElementById('home');
+    const loginPage = document.getElementById('loginPage');
+    const resultPage = document.getElementById('resultPage');
+    const openLogin = document.getElementById('openLogin');
+    const backHome = document.getElementById('backHome');
+    const backToLogin = document.getElementById('backToLogin');
+
+    openLogin.onclick = ()=>{ home.style.display='none'; loginPage.style.display='flex'; };
+    backHome.onclick = ()=>{ loginPage.style.display='none'; home.style.display='block'; };
+    backToLogin.onclick = ()=>{ resultPage.style.display='none'; loginPage.style.display='flex'; };
+
+    let timerEl = document.getElementById('timer');
+    let secs = 119;
+    function tick(){
+      if(secs<=0){timerEl.textContent='انتهى الوقت';return;}
+      const m=String(Math.floor(secs/60)).padStart(2,'0');
+      const s=String(secs%60).padStart(2,'0');
+      timerEl.textContent=`${m}:${s}`;
+      secs--;setTimeout(tick,1000);
+    } tick();
+
+    document.getElementById('loginBtn').addEventListener('click',()=>{
+      const exam = document.getElementById('examNum').value.trim();
+      const pass = document.getElementById('pass').value.trim();
+      const cap = document.getElementById('captcha').value.trim();
+      if(!exam || !pass || !cap){alert('يرجى تعبئة جميع الحقول');return;}
+      if(Number(cap)!==69){alert('إجابة التحقق غير صحيحة');return;}
+      loginPage.style.display='none';
+      resultPage.style.display='flex';
+    });
+  </script>
+</body>
+</html>
