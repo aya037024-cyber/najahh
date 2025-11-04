@@ -30,7 +30,8 @@ footer{padding:40px;text-align:center;color:#999}
 .card {
   background: var(--card);
   max-width: 900px;       /* ✅ نفس عرض الكارد في الصورة */
-  
+  min-width: 300px;    /* ✅ لضمان عدم صغر الكارد جدًا على الشاشات الصغيرة */
+  width: 100%;
   padding: 50px 40px;     /* ✅ تقليل الارتفاع قليلاً */
   border-radius: 20px;
   box-shadow: var(--shadow);
