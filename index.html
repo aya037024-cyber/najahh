@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="https://najah.iq/logo.png" />
   <title>نتائج الامتحانات - وزارة التربية</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -195,6 +196,11 @@
 </head>
 <body>
   <header class="container">
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <div class="logo">
       <img src="logo.jpg" width="86" alt="logo">
       <div>
@@ -202,7 +208,7 @@
         <div style="font-size:14px;color:#666">وزارة التربية</div>
       </div>
     </div>
-    <nav>
+    <nav id="navMenu">
       <a href="#">الأخبار والأنشطة</a>
       <a href="#">عن الوزارة</a>
       <a href="#">شؤون المواطنين</a>
@@ -218,7 +224,7 @@
         <p class="lead">نُسعد بأن نوفر لك هذه الخدمة الإلكترونية لعرض نتائجك الامتحانية بسهولة وسرعة. اختر مديريتك التعليمية من القائمة ثم اضغط على زر "تسجيل الدخول" للمتابعة.</p>
         <div class="controls">
           <select id="mudiriyah">
-            <option value="">اختر مديريتك التعليمية ▾</option>
+            <option value="">اختر مديريتك التعليمية</option>
             <option>الكرخ الأولى</option>
             <option>الكرخ الثانية</option>
             <option>الكرخ الثالثة</option>
@@ -286,12 +292,12 @@
           <table>
             <tr><th>المادة</th><th>الدرجة</th></tr>
             <tr><td>الاسلامية / العربية</td><td>100</td></tr>
-            <tr><td>الانكليزية</td><td>م</td></tr>
+            <tr class="red-mark"><td>الانكليزية</td><td>م</td></tr>
             <tr><td>الرياضيات</td><td>100</td></tr>
-            <tr><td>الاجتماعيات</td><td>م</td></tr>
+            <tr class="red-mark"><td>الاجتماعيات</td><td>م</td></tr>
             <tr><td>الاحياء</td><td>100</td></tr>
             <tr><td>الكيمياء</td><td>100</td></tr>
-            <tr><td>الفيزياء</td><td>م</td></tr>
+            <tr class="red-mark"><td>الفيزياء</td><td>م</td></tr>
           </table>
           <div class="note">
             ملاحظة: هذه النتيجة لا تعد وثيقة رسمية ويجب الاعتماد على الوثائق الورقية الصادرة من الوزارة.
@@ -315,13 +321,12 @@
             <div class="info-item"><div class="label">اسم المدرسة</div><div class="value">******</div></div>
             <div class="info-item"><div class="label">المديرية</div><div class="value">******</div></div>
             <div class="info-item"><div class="label">الفرع</div><div class="value">متوسطة</div></div>
-            <div class="info-item"><div class="label">المجموع</div><div class="value">0</div></div>
-            <div class="info-item"><div class="label">المعدل</div><div class="value">0%</div></div>
+            <div class="info-item"><div class="label">المجموع</div><div class="value">-</div></div>
+            <div class="info-item"><div class="label">المعدل</div><div class="value">-%</div></div>
             <div class="info-item"><div class="label">النتيجة النهائية</div><div class="value status">مكمل</div></div>
           </div>
 
           <div class="footer">
-            <button class="btn">تحميل النتيجة</button>
             <button class="btn" id="backToLogin">تسجيل الخروج</button>
           </div>
         </div>
@@ -332,6 +337,22 @@
   <footer>جميع الحقوق محفوظة © 2025 وزارة التربية العراقية</footer>
 
   <script>
+    // Burger menu functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    menuToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!menuToggle.contains(event.target) && !navMenu.contains(event.target)) {
+        navMenu.classList.remove('active');
+      }
+    });
+    
+    // Page navigation
     const home = document.getElementById('home');
     const loginPage = document.getElementById('loginPage');
     const resultPage = document.getElementById('resultPage');
