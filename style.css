@@ -79,17 +79,20 @@ footer{padding:40px;text-align:center;color:#999}
 }
 
 .note {
-  display: block;
-  background-color: #ffaaaa55; /* نفس لون red-mark */
-  border: 2px solid #ff4d4d;
-  color: #b30000;
-  padding: 10px 15px;
-  border-radius: 8px;
-  font-weight: bold;
-  margin-top: 10px;
+  background-color: #ffe6e6;   /* أحمر فاتح جدًا */
+  border: 1.8px solid #ff6666; /* إطار أحمر ناعم */
+  color: #b30000;              /* لون النص */
+  padding: 12px 18px;
+  border-radius: 10px;         /* زوايا مستديرة */
+  font-weight: 600;
+  line-height: 1.6;
   width: 100%;
   box-sizing: border-box;
+  text-align: right;           /* لأن النص عربي */
+  direction: rtl;
+  font-family: "Tahoma", "Arial", sans-serif;
 }
+
 
 
 
@@ -425,6 +428,7 @@ label{display:block;font-weight:600;margin-bottom:8px}
     height: 70px;
   }
 }
+
 
 
 
