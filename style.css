@@ -79,6 +79,16 @@ footer{padding:40px;text-align:center;color:#999}
   font-weight: bold;
 }
 
+.note {
+  background-color: #ffe5e5;   /* خلفية حمراء فاتحة */
+  border: 2px solid #ff4d4d;   /* إطار أحمر واضح */
+  color: #b30000;              /* لون النص أحمر غامق */
+  padding: 10px 15px;          /* مسافة داخلية مريحة */
+  border-radius: 8px;          /* زوايا ناعمة */
+  font-weight: bold;           /* إبراز النص */
+  width: 100%;                 /* يغطي كامل السطر */
+  box-sizing: border-box;      /* يضمن عدم تجاوز الإطار للحجم */
+}
 
 
 .card h2{margin:0 0 10px}
@@ -413,4 +423,5 @@ label{display:block;font-weight:600;margin-bottom:8px}
     height: 70px;
   }
 }
+
 
