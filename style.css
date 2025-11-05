@@ -74,14 +74,12 @@ footer{padding:40px;text-align:center;color:#999}
   display: inline-block;
   padding: 2px 8px;
   background-color: #ffb3b3;   /* أحمر فاتح */
-  border: 2px solid #ff4d4d;   /* إطار أحمر أغمق قليلاً */
   border-radius: 6px;
   font-weight: bold;
 }
 
 .note {
   background-color: #ffe5e5;   /* خلفية حمراء فاتحة */
-  border: 2px solid #ff4d4d;   /* إطار أحمر واضح */
   color: #b30000;              /* لون النص أحمر غامق */
   padding: 10px 15px;          /* مسافة داخلية مريحة */
   border-radius: 8px;          /* زوايا ناعمة */
@@ -423,5 +421,6 @@ label{display:block;font-weight:600;margin-bottom:8px}
     height: 70px;
   }
 }
+
 
 
